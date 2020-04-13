@@ -2,30 +2,25 @@ import React, {Component} from 'react';
 //import jwt_decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import "./MyReports.css";
+import "./ListReportsToMe.css";
 
 const Report = props => (
     <tr>
         <td>{props.report.report_time.substring(0,10)}</td>
-        <td>{props.report.nurse_email}</td>
+        <td>{props.report.reporter_email}</td>
         <td>{props.report.body_temperature}</td>
         <td>{props.report.heart_rate}</td>
         <td>{props.report.respiratory_rate}</td>
         <td>{props.report.high_blood_pressure}</td>
         <td>{props.report.low_blood_pressure}</td>
         <td>{props.report.weight}</td>
-        {props.report.reply_time !== null ?
-            [ 
-                <td>
-                    <Link to={"/readReply/"+props.report._id}>Read&nbsp;Reply</Link> 
-                </td>
-            ]
-        : null}
-        
+        <td>
+             <Link to={"/editReply/"+props.report._id}>Edit</Link> 
+        </td>
     </tr>
 )
 
-class MyPatients extends Component {
+class ListReportsToMe extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,12 +31,12 @@ class MyPatients extends Component {
     componentDidMount() {
         //console.log("DisplayReports");
         console.log("email = " + localStorage.email);
-        axios.get('http://localhost:5000/reports/patientReports/' + localStorage.email)
+        axios.get('http://localhost:5000/reports/reportsByNurse/' + localStorage.email)
             .then(res => {
                 this.setState({reports: res.data.reports});
-                console.log(this.state.reports);
+                //console.log(this.state.reports);
             }).catch(function (error) {
-                console.log(error);
+                //console.log(error);
             })
     }
     reportList() {
@@ -61,7 +56,7 @@ class MyPatients extends Component {
                         <thead>
                             <tr>
                                 <th>Report&nbsp;Time</th>
-                                <th>Nurse</th>
+                                <th>Reporter</th>
                                 <th>Body Temperature</th>
                                 <th>Heart Rate</th>
                                 <th>Respiratory Rate</th>
@@ -80,4 +75,4 @@ class MyPatients extends Component {
     }
 }
 
-export default MyPatients
+export default ListReportsToMe

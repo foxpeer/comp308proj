@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
-//import Menu from './components/menu';
 import Navbar from './components/Navbar';
 import Landing from './components/Landing';
 import Login from './components/Login';
@@ -19,8 +18,19 @@ import NoNursePatients from './components/nurse/patients/NoNursePatients';//nurs
 
 import CreateReport from './components/reports/CreateReport';
 import MyReports from './components/reports/MyReports';
+import ReadReply from './components/reports/ReadReply';
 
 import CreatePost from './components/nurse/posts/CreatePost';
+import EditPost from './components/nurse/posts/EditPost';
+import ReadPost from './components/nurse/posts/ReadPost';
+import DeletePost from './components/nurse/posts/DeletePost';
+
+import ListReportsToMe from './components/nurse/Replys/ListReportsToMe';
+import EditReply from './components/nurse/Replys/EditReply';
+
+import Iris from './components/AI/Iris/Iris';
+import Predict from './components/AI/Iris/predict';
+
 
 
 class App extends Component {
@@ -46,8 +56,18 @@ class App extends Component {
 
             <Route exact path="/createReport/" component={CreateReport} />
             <Route exact path="/myReports" component={MyReports} />
+            <Route exact path="/readReply/:id" component= {ReadReply} />
 
             <Route exact path="/createPost" component={CreatePost} />
+            <Route exact path="/editPost/:id" component={EditPost} />
+            <Route exact path="/readPost/:id" component={ReadPost} />
+            <Route exact path="/deletePost/:id" component={DeletePost} />
+
+            <Route exact path="/listReportsToMe/" component={ListReportsToMe} />
+            <Route exact path="/editReply/:id" component={EditReply} />
+
+            <Route exact path="/iris/" component={Iris} />
+            <Route exact path="/predict/" component={Predict} />
 
           </div>
         </div>

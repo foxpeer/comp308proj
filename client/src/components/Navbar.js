@@ -82,12 +82,17 @@ class Navbar extends Component{
                 </li>
                 <li className="nav-item">
                     <Link to="/noNursePatients" className="my-nav-link">
-                        NoNursePatient
+                        NoNursePatients
                     </Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/myPatients" className="my-nav-link">
                         MyPatients
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/listReportsToMe" className="my-nav-link">
+                        ReplyReports
                     </Link>
                 </li>
             </ul>
@@ -104,6 +109,15 @@ class Navbar extends Component{
                     <Link to="/myReports" className="my-nav-link">
                         MyReports
                     </Link>
+                </li>
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="/displayCourses" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        AI
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a className="dropdown-item" href="/createCourse">Diagram</a>
+                        <a className="dropdown-item" href="/iris">Iris</a>
+                    </div>
                 </li>
             </ul>
         );
